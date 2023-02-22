@@ -19,7 +19,25 @@ Andamento dll'allenamento di Faster R-CNN
 
 - RISULTATI
 
-Per ottenere alcune metriche sul test set ho sfruttato questa [pagina](https://github.com/rafaelpadilla/review_object_detection_metrics) (il resto le ho calcolate io stesso), che calcola le performance in base alle bounding boxes groundtruths e quelle generate dalla rete.
+Per ottenere alcune metriche sul test set ho sfruttato questa [pagina](https://github.com/rafaelpadilla/review_object_detection_metrics), il resto le ho calcolate io stesso utilizzando il file `plot_data.py` , che calcola le performance in base alle bounding boxes groundtruths e quelle generate dalla rete.
 
 Per generare le groundtruths ho utilizzato il file `groundtruths_bb.py`, per le bounding boxes di yolo bisogna usare `yolo_boxes_to_csv.py` mentre per faster r-cnn ho modificato il file `inference.py` presente nella repo citata precedentemente.
+Ecco i risultati delle performance
+
+<table cellspacing="2" cellpadding="2" width="1200" border="0">
+<tbody>
+<tr>
+<td valign="center" width=300"><img src="repo-images/AP.png"></td>
+<td valign="center" width="300"><img src="repo-images/Accuracy.png"></td>
+</tr>
+<tr>
+<td valign="center" width=300"><img src="repo-images/Precision.png"></td>
+<td valign="center" width="300"><img src="repo-images/Recall.png"></td>
+</tr>
+<tr>
+<td valign="center" width="300"><img src="repo-images/F1.png"></td>
+<td valign="center" width="300"><img src="repo-images/pr_curve.png"></td>
+</tr>
+</tbody>
+</table>
 
