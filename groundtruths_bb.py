@@ -2,7 +2,6 @@ import cv2
 import os
 import pandas as pd
 
-
 test_groundtruths_bb_folder = "../dataset/labels/test"
 test_images_folder = "../dataset/images/test"
 name_images = []
