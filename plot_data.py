@@ -8,51 +8,7 @@ from utils import *
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
-def obtain_BondingBoxes(model):
-    bb = BoundingBoxes()
-    groundtruths = pd.read_csv("test_groundtruths_bb.csv")
-    detected = pd.read_csv(f"{model}_val_detected_bb.csv")
-
-    # BBFormat.XYWH è il formato [x(top-left),y(top-left),w,h]    
-    for index, row in groundtruths.iterrows():
-        bb.addBoundingBox(BoundingBox(row["image-name"],
-                                      row["class"],
-                                      row["x"],
-                                      row["y"],
-                                      row["w"],
-                                      row["h"],
-                                      typeCoordinates=CoordinatesType.Absolute,
-                                      imgSize=(row["image-w-dim"],row["image-h-dim"]),
-                                      bbType=BBType.GroundTruth,
-                                      classConfidence=None,
-                                      format=BBFormat.XYWH))
-    gt_bb = len(bb._boundingBoxes)
-    print(f"Number of groundtruths bounding boxes: {gt_bb}")
-    for index, row in detected.iterrows():
-        bb.addBoundingBox(BoundingBox(row["image-name"],
-                                      row["class"],
-                                      row["x"],
-                                      row["y"],
-                                      row["w"],
-                                      row["h"],
-                                      typeCoordinates=CoordinatesType.Absolute,
-                                      imgSize=(row["image-w-dim"],row["image-h-dim"]),
-                                      bbType=BBType.Detected,
-                                      classConfidence=row["confidence"],
-                                      format=BBFormat.XYWH))
-    print(f"Number of detected bounding boxes: {len(bb._boundingBoxes) - gt_bb}")
-    print(len(bb._boundingBoxes))
-    return bb
-
-def plot_pr():
-    bb = obtain_BondingBoxes("yolov5n")
-    evaluator = Evaluator()
-    dict = evaluator.PlotPrecisionRecallCurve(bb,
-                                            IOUThreshold=0.5,
-                                            method=MethodAveragePrecision.EveryPointInterpolation,
-                                            showAP=True,
-                                            showInterpolatedPrecision=False)
+# Le parti commentate fanno riferimento a risultati di altre reti
 
 def plot_pr_curve(yolov5n=None,yolov5s=None,yolov5m=None,resnet=None,mobilenet=None,squeezenet=None):
     fig, ax = plt.subplots()
@@ -60,8 +16,8 @@ def plot_pr_curve(yolov5n=None,yolov5s=None,yolov5m=None,resnet=None,mobilenet=N
     #ax.plot(yolov5s[0],yolov5s[1],color="b",label="Yolov5s")
     ax.plot(yolov5m[0],yolov5m[1],color="g",label="Yolov5m")
     ax.plot(resnet[0],resnet[1],color="y",label="ResNet50")
-   #ax.plot(mobilenet[0],mobilenet[1],color="orange",label="MobileNet")
-   #ax.plot(squeezenet[0],squeezenet[1],color="gray",label="SqueezeNet")
+    #ax.plot(mobilenet[0],mobilenet[1],color="orange",label="MobileNet")
+    #ax.plot(squeezenet[0],squeezenet[1],color="gray",label="SqueezeNet")
     ax.set_title("Precision-Recall Curve")
     plt.legend()
     plt.grid(True)
@@ -143,6 +99,7 @@ def plot_Acc(yolov5n=None,yolov5s=None,yolov5m=None,resnet=None,mobilenet=None,s
     plt.ylim((0.4,0.9))
     plt.show()
 
+# Mostra a schermo i risultati di tutte le reti
 def display_all_data():
     groundtruths = pd.read_csv("test_groundtruths_bb.csv")
     yolov5n = pd.read_csv("yolov5n_val_detected_bb.csv")
@@ -375,6 +332,8 @@ def display_all_data():
     #plot_CF(yolov5n=yolov5n_cf,yolov5s=yolov5s_cf,yolov5m=yolov5m_cf,resnet=resnet_cf,mobilenet=mobilenet_cf,squeezenet=squeezenet_cf)
     #plot_Acc(yolov5n=yolov5n_acc,yolov5s=yolov5s_acc,yolov5m=yolov5m_acc,resnet=resnet_acc,mobilenet=mobilenet_acc,squeezenet=squeezenet_acc)
 
+    
+# Mostra a schermo i risultati di yolov5m e resnet50
 def display_less_data():
     groundtruths = pd.read_csv("test_groundtruths_bb.csv")
     yolov5m = pd.read_csv("yolo_test_detected_bb.csv")
@@ -461,7 +420,5 @@ def display_less_data():
     plot_CM(yolov5n=None,yolov5s=None,yolov5m=yolov5m_cm,resnet=resnet_cm,mobilenet=None,squeezenet=None)
     plot_Acc(yolov5n=None,yolov5s=None,yolov5m=yolov5m_acc,resnet=resnet_acc,mobilenet=None,squeezenet=None)
                       
-#plot_pr()
-#display_all_data()
 display_less_data()
 
