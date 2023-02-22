@@ -159,11 +159,8 @@ def main(args):
     conf = []
     img_w_dim = []
     img_h_dim = []
-########################################################
     for i in range(len(test_images)):
-#######################################################
         line_ls = test_images[i].split("/")
-        #name = line_ls[len(line_ls) - 1][:-4]
         img = cv2.imread(test_images[i])
         img_h, img_w = img.shape[:2]
 #######################################################
