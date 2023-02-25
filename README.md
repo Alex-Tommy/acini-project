@@ -29,16 +29,16 @@ Ecco i risultati delle performance
 <table cellspacing="2" cellpadding="2" width="1200" border="0">
 <tbody>
 <tr>
-<td valign="center" width=300"><img src="repo-images/AP.png"></td>
-<td valign="center" width="300"><img src="repo-images/Accuracy.png"></td>
+<td valign="center" width=400"><img src="repo-images/AP.png"></td>
+<td valign="center" width="400"><img src="repo-images/Accuracy.png"></td>
 </tr>
 <tr>
-<td valign="center" width=300"><img src="repo-images/Precision.png"></td>
-<td valign="center" width="300"><img src="repo-images/Recall.png"></td>
+<td valign="center" width=400"><img src="repo-images/Precision.png"></td>
+<td valign="center" width="400"><img src="repo-images/Recall.png"></td>
 </tr>
 <tr>
-<td valign="center" width="300"><img src="repo-images/F1.png"></td>
-<td valign="center" width="300"><img src="repo-images/pr_curve.png"></td>
+<td valign="center" width="400"><img src="repo-images/F1.png"></td>
+<td valign="center" width="400"><img src="repo-images/pr_curve.png"></td>
 </tr>
 </tbody>
 </table>
