@@ -29,11 +29,11 @@ Ecco i risultati delle performance
 <table cellspacing="2" cellpadding="2" width="1200" border="0">
 <tbody>
 <tr>
-<td valign="center" width=400"><img src="repo-images/AP.png"></td>
+<td valign="center" width="400"><img src="repo-images/AP.png"></td>
 <td valign="center" width="400"><img src="repo-images/Accuracy.png"></td>
 </tr>
 <tr>
-<td valign="center" width=400"><img src="repo-images/Precision.png"></td>
+<td valign="center" width="400"><img src="repo-images/Precision.png"></td>
 <td valign="center" width="400"><img src="repo-images/Recall.png"></td>
 </tr>
 <tr>
