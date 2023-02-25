@@ -150,23 +150,23 @@ def main(args):
     # To keep adding the frames' FPS.
     total_fps = 0
 #########################################################
-    name_image = []
-    classes = []
-    xs = []
-    ys = []
-    ws = []
-    hs = []
-    conf = []
-    img_w_dim = []
-    img_h_dim = []
-    for i in range(len(test_images)):
-        line_ls = test_images[i].split("/")
-        img = cv2.imread(test_images[i])
-        img_h, img_w = img.shape[:2]
-#######################################################
+    name_image = []                                     #
+    classes = []                                        #
+    xs = []                                             #
+    ys = []                                             #
+    ws = []                                             #
+    hs = []                                             #
+    conf = []                                           #
+    img_w_dim = []                                      #
+    img_h_dim = []                                      #
+    for i in range(len(test_images)):                   #
+        line_ls = test_images[i].split("/")             #
+        img = cv2.imread(test_images[i])                #
+        img_h, img_w = img.shape[:2]                    #
+#########################################################
         # Get the image file name for saving output later on.
         image_name = test_images[i].split(os.path.sep)[-1].split('.')[0]
-        #print("Analizzando2: ",image_name)
+        #print("Analizzando: ",image_name)
         orig_image = cv2.imread(test_images[i])
         frame_height, frame_width, _ = orig_image.shape
         if args['img_size'] != None:
@@ -185,21 +185,21 @@ def main(args):
         start_time = time.time()
         with torch.no_grad():
             outputs = model(image.to(DEVICE))
-#####################################################################################################################################
-            pred_boxes = [[(i[0], i[1]), (i[2], i[3])] for i in list(outputs[0]['boxes'].detach().tolist())]
-            pred_score = list(outputs[0]['scores'].detach().tolist())
-            for i in range(len(pred_score)):
-                # [x,y,w,h]
-                name_image.append(int(image_name))
-                classes.append("acino")
-                xs.append(int(pred_boxes[i][0][0]/res_w*img_w))
-                ys.append(int(pred_boxes[i][0][1]/res_h*img_h))
-                ws.append(int(pred_boxes[i][1][0]/res_w*img_w - pred_boxes[i][0][0]/res_w*img_w))
-                hs.append(int(pred_boxes[i][1][1]/res_h*img_h - pred_boxes[i][0][1]/res_h*img_h))
-                conf.append(pred_score[i])
-                img_w_dim.append(img_w)
-                img_h_dim.append(img_h)
-#####################################################################################################################################
+#########################################################################################################################
+            pred_boxes = [[(i[0], i[1]), (i[2], i[3])] for i in list(outputs[0]['boxes'].detach().tolist())]            #
+            pred_score = list(outputs[0]['scores'].detach().tolist())                                                   #
+            for i in range(len(pred_score)):                                                                            #
+                # [x,y,w,h]                                                                                             #
+                name_image.append(int(image_name))                                                                      #   
+                classes.append("acino")                                                                                 #                                               
+                xs.append(int(pred_boxes[i][0][0]/res_w*img_w))                                                         #
+                ys.append(int(pred_boxes[i][0][1]/res_h*img_h))                                                         #
+                ws.append(int(pred_boxes[i][1][0]/res_w*img_w - pred_boxes[i][0][0]/res_w*img_w))                       #   
+                hs.append(int(pred_boxes[i][1][1]/res_h*img_h - pred_boxes[i][0][1]/res_h*img_h))                       #
+                conf.append(pred_score[i])                                                                              #
+                img_w_dim.append(img_w)                                                                                 #
+                img_h_dim.append(img_h)                                                                                 #
+#########################################################################################################################
         end_time = time.time()
 
         # Get the current fps.
@@ -231,23 +231,23 @@ def main(args):
         cv2.imwrite(f"{OUT_DIR}/{image_name}.jpg", orig_image)
         print(f"Image {i+1} done...")
         print('-'*50)
-################################################################################################################################
-    print(name_image)
-    raw_data = {
-        'image-name':name_image,
-        'class':classes,
-        'x':xs,
-        'y':ys,
-        'w':ws,
-        'h':hs,
-        'confidence':conf,
-        'image-w-dim':img_w_dim,
-        'image-h-dim':img_h_dim
-    }
-
-    data = pd.DataFrame(raw_data,columns=['image-name','class','x','y','w','h','confidence','image-w-dim','image-h-dim'])
-    data.to_csv("faster_val_detected_bb.csv",index=False)
-##################################################################################################################################
+#################################################################################################################################
+    print(name_image)                                                                                                           #
+    raw_data = {                                                                                                                #
+        'image-name':name_image,                                                                                                #       
+        'class':classes,                                                                                                        #
+        'x':xs,                                                                                                                 #   
+        'y':ys,                                                                                                                 #   
+        'w':ws,                                                                                                                 #
+        'h':hs,                                                                                                                 #   
+        'confidence':conf,                                                                                                      #
+        'image-w-dim':img_w_dim,                                                                                                #
+        'image-h-dim':img_h_dim                                                                                                 #
+    }                                                                                                                           #
+                                                                                                                                #
+    data = pd.DataFrame(raw_data,columns=['image-name','class','x','y','w','h','confidence','image-w-dim','image-h-dim'])       #
+    data.to_csv("faster_val_detected_bb.csv",index=False)                                                                       #
+#################################################################################################################################
     print('TEST PREDICTIONS COMPLETE')
     cv2.destroyAllWindows()
     # Calculate and print the average FPS.
