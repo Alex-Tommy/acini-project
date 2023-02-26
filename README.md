@@ -17,7 +17,7 @@ Andamento dell'allenamento yolov5:
 Andamento dell'allenamento di Faster R-CNN
 ![](https://github.com/Alex-Tommy/acini-project/blob/main/repo-images/faster_differences.png)
 
-## RISULTATI
+## RISULTATI METRICHE
 
 Per ottenere alcune metriche sul test set ho usufruito di alcune funzioni di questa [pagina](https://github.com/rafaelpadilla/review_object_detection_metrics), il resto le ho calcolate io stesso utilizzando il file `plot_data.py`. Per ottenere i file csv (le cui righe descrivono la posizione di una bounding box) necessari per utilizzare `plot_data.py` bisogna eseguire :
 - `groundtruths_bb.py`
