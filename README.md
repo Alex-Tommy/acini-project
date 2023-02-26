@@ -69,4 +69,6 @@ Confronto fra le versioni di yolov5, in giallo la versione "nano", in arancione 
 </tbody>
 </table>
 
+Per disegnare le bounding boxes ho applicato una confidence threshold pari a 0.3
+
 
