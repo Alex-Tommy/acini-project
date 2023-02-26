@@ -57,5 +57,16 @@ Confronto tra le diversi reti di backbone di Faster R-CNN, in rosso ResNet50, in
 </tbody>
 </table>
 
+Confronto fra le versioni di yolov5, in giallo la versione "nano", in arancione la versione "small", in ciano la versione "medium"
+
+<table cellspacing="3" cellpadding="3" width="900" border="0">
+<tbody>
+<tr>
+<td valign="center" width="300"><img src="repo-images/detected_yolov5n.jpg"></td>
+<td valign="center" width="300"><img src="repo-images/detected_yolov5s.jpg"></td>
+<td valign="center" width="300"><img src="repo-images/detected_yolov5m.jpg"></td>
+</tr>
+</tbody>
+</table>
 
 
