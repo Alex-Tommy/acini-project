@@ -43,3 +43,8 @@ Ecco i risultati delle performance
 </tbody>
 </table>
 
+### RISULTATI IMMAGINI
+
+
+
+
