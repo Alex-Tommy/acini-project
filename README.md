@@ -43,7 +43,7 @@ Ecco i risultati delle performance
 </tbody>
 </table>
 
-## RISULTATI IMMAGINI
+## RISULTATI IMMAGINI (DA COMPLETARE)
 
 Confronto tra le diversi reti di backbone di Faster R-CNN, in rosso ResNet50, in blu Mobilenetv3, in verde SqueezeNet
 
