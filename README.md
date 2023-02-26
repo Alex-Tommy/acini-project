@@ -11,10 +11,10 @@ Le reti utilizzare sono [Yolov5](https://github.com/ultralytics/yolov5) e [Faste
 
 ## ALLENAMENTO
 
-Andamento dell' allenamento yolov5:
+Andamento dell'allenamento yolov5:
 ![](https://github.com/Alex-Tommy/acini-project/blob/main/repo-images/yolo_differences.png)
 
-Andamento dll'allenamento di Faster R-CNN
+Andamento dell'allenamento di Faster R-CNN
 ![](https://github.com/Alex-Tommy/acini-project/blob/main/repo-images/faster_differences.png)
 
 ## RISULTATI
